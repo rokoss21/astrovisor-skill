@@ -215,6 +215,30 @@ try {
     ),
     ".env\nprofiles/\n*.backup-*\n",
   );
+
+  const forcedInstall = JSON.parse(
+    run([
+      "install",
+      "--target",
+      "both",
+      "--scope",
+      "project",
+      "--project-dir",
+      projectDir,
+      "--force",
+      "--json",
+    ]).stdout,
+  );
+  for (const installed of forcedInstall.installed) {
+    assert.ok(installed.backup);
+    assert.ok(
+      installed.backup.startsWith(path.join(skillHome, "install-backups")),
+    );
+    assert.equal(
+      installed.backup.startsWith(path.dirname(installed.path)),
+      false,
+    );
+  }
   assert.ok(
     fs.existsSync(
       path.join(
@@ -256,6 +280,7 @@ try {
           "unknown-time safety",
           "Codex and Claude installation",
           "defensive project-skill gitignore",
+          "backup isolation from skill discovery",
           "secret-free client configuration",
           "private POSIX file modes",
         ],

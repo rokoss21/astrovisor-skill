@@ -1,6 +1,6 @@
 {
   "name": "astrovisor-skill",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Universal AstroVisor Agent Skill with private Markdown profiles, safe credential onboarding, and live-schema MCP workflows.",
   "type": "module",
   "bin": {
