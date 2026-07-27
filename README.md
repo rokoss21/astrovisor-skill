@@ -13,6 +13,13 @@ The skill is the workflow layer. It uses
 [AstroVisor MCP](https://github.com/rokoss21/astrovisor-mcp) as the calculation and
 API-access layer.
 
+> [!IMPORTANT]
+> The skill does not provide anonymous access to AstroVisor calculations. You need
+> a personal AstroVisor API key beginning with `pk-`. Create an account and get
+> your key at [astrovisor.io](https://astrovisor.io/). During setup, the skill can
+> ask for the key and save it in a private local configuration without placing it
+> in `SKILL.md`, people profiles, generated client configuration, or Git.
+
 ```text
 User conversation
     ↓
