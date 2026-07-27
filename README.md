@@ -20,6 +20,37 @@ API-access layer.
 > ask for the key and save it in a private local configuration without placing it
 > in `SKILL.md`, people profiles, generated client configuration, or Git.
 
+### Configure the API key in three steps
+
+1. Create an account and obtain a `pk-...` key at
+   [astrovisor.io](https://astrovisor.io/).
+2. Enter it in the hidden terminal prompt:
+
+   ```bash
+   node "$HOME/.agents/skills/astrovisor/scripts/astrovisor-skill.mjs" \
+     config set-key
+   ```
+
+3. Verify the saved credential and MCP connection:
+
+   ```bash
+   node "$HOME/.agents/skills/astrovisor/scripts/astrovisor-skill.mjs" \
+     doctor --json
+   ```
+
+If you prefer guided setup, ask the agent:
+
+```text
+Use $astrovisor. Help me securely configure my AstroVisor API key, ask me only
+for actions you need, keep the key out of chat and generated configuration, then
+run the connection diagnostics.
+```
+
+The agent will check the installation, offer the private storage option, direct
+you to the hidden key prompt, and verify the result. Do not paste a real key into
+the conversation unless you intentionally want the agent to handle it for the
+current session.
+
 ```text
 User conversation
     ↓
