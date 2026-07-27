@@ -1,0 +1,47 @@
+{
+  "name": "astrovisor-skill",
+  "version": "1.0.0",
+  "description": "Universal AstroVisor Agent Skill with private Markdown profiles, safe credential onboarding, and live-schema MCP workflows.",
+  "type": "module",
+  "bin": {
+    "astrovisor-skill": "astrovisor/scripts/astrovisor-skill.mjs"
+  },
+  "scripts": {
+    "test": "npm run test:skill && npm run validate",
+    "test:skill": "node astrovisor/scripts/self-test.mjs",
+    "validate": "node scripts/validate-repo.mjs",
+    "prepublishOnly": "npm test && node -e \"require('fs').chmodSync('astrovisor/scripts/astrovisor-skill.mjs', '755'); require('fs').chmodSync('astrovisor/scripts/astrovisor-mcp-launcher.mjs', '755')\""
+  },
+  "keywords": [
+    "agent-skill",
+    "astrovisor",
+    "astrology",
+    "mcp",
+    "codex",
+    "claude",
+    "chatgpt",
+    "profiles",
+    "openapi"
+  ],
+  "author": "Emil Rokossovskiy <emil@astrovisor.io>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rokoss21/astrovisor-skill.git"
+  },
+  "homepage": "https://github.com/rokoss21/astrovisor-skill#readme",
+  "bugs": {
+    "url": "https://github.com/rokoss21/astrovisor-skill/issues"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "files": [
+    "astrovisor/",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}
