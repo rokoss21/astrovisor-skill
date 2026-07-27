@@ -29,7 +29,7 @@ import {
   writePrivateFile,
 } from "./lib.mjs";
 
-const SKILL_VERSION = "1.0.0";
+const SKILL_VERSION = "1.0.1";
 const HELP = `
 AstroVisor skill ${SKILL_VERSION}
 
@@ -172,7 +172,7 @@ async function installSkill(args) {
   for (const destination of destinations) {
     results.push({
       client: destination.client,
-      ...(await copySkill(destination.path, force)),
+      ...(await copySkill(destination.path, force, destination.client)),
     });
   }
 
@@ -198,7 +198,7 @@ async function installSkill(args) {
   }
 }
 
-async function copySkill(destination, force) {
+async function copySkill(destination, force, client) {
   const sourceReal = fs.realpathSync(SKILL_ROOT);
   if (fs.existsSync(destination)) {
     try {
@@ -220,7 +220,12 @@ async function copySkill(destination, force) {
   ensurePrivateDirectory(path.dirname(destination));
   let backup = null;
   if (fs.existsSync(destination)) {
-    backup = `${destination}.backup-${compactTimestamp()}`;
+    const backupRoot = path.join(resolveConfig().home, "install-backups");
+    ensurePrivateDirectory(backupRoot);
+    backup = path.join(
+      backupRoot,
+      `${client}-${compactTimestamp()}-${process.pid}`,
+    );
     fs.renameSync(destination, backup);
   }
 

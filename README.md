@@ -69,21 +69,21 @@ Requirements:
 Install for Codex and Claude Code:
 
 ```bash
-npx --yes --package=astrovisor-skill@1.0.0 -- \
+npx --yes --package=astrovisor-skill@1.0.1 -- \
   astrovisor-skill install --target both
 ```
 
 Install only for Codex:
 
 ```bash
-npx --yes --package=astrovisor-skill@1.0.0 -- \
+npx --yes --package=astrovisor-skill@1.0.1 -- \
   astrovisor-skill install --target codex
 ```
 
 Install only for Claude Code:
 
 ```bash
-npx --yes --package=astrovisor-skill@1.0.0 -- \
+npx --yes --package=astrovisor-skill@1.0.1 -- \
   astrovisor-skill install --target claude
 ```
 
@@ -170,7 +170,7 @@ The skill can also activate implicitly when a request matches its description.
 User scope makes the skill available in every project:
 
 ```bash
-npx --yes --package=astrovisor-skill@1.0.0 -- \
+npx --yes --package=astrovisor-skill@1.0.1 -- \
   astrovisor-skill install --target both --scope user
 ```
 
@@ -184,7 +184,7 @@ Destinations:
 Use project scope when a team wants a pinned, reviewable copy:
 
 ```bash
-npx --yes --package=astrovisor-skill@1.0.0 -- \
+npx --yes --package=astrovisor-skill@1.0.1 -- \
   astrovisor-skill install --target both --scope project \
   --project-dir /path/to/project
 ```
@@ -208,12 +208,13 @@ node astrovisor/scripts/astrovisor-skill.mjs install --target both
 ### Update
 
 ```bash
-npx --yes --package=astrovisor-skill@1.0.0 -- \
+npx --yes --package=astrovisor-skill@1.0.1 -- \
   astrovisor-skill install --target both --force
 ```
 
-The previous installation is moved to a timestamped `*.backup-*` directory.
-Private profiles and the recommended external `skill.env` are not replaced.
+The previous installation is moved to the private
+`~/.config/astrovisor/install-backups/` directory. Private profiles and the
+recommended external `skill.env` are not replaced.
 
 ## Codex and ChatGPT desktop
 
@@ -564,4 +565,3 @@ runtime instruction set loaded by AI clients. Detailed material stays in
 ## License
 
 [MIT](LICENSE)
-
